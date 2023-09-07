@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1681890218 source:c:\users\cebelle\onedrive - nanyang technological university\y1\s2\sc1007 data structures & algorithm\assignment\asg3\stackpairwiseconsec\main.c
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+
