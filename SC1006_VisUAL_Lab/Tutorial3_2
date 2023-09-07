@@ -1,0 +1,31 @@
+NUMX		DCD		0x4	;create number in memory
+NUMY		DCD		0x3
+ANS		FILL		4
+		
+Start	MOV		SP,#0xFFFFFFFC
+		MOV		R0,#0x100
+		LDR		R1,[R0]
+		STR		R1,[SP,#-4]!
+		ADD		R0,R0,#4
+		LDR		R1,[R0]
+		STR		R1,[SP,#-4]!
+		ADD		R0,R0,#4
+		STR		R0,[SP,#-4]!
+		BL		MySub
+		LDR		R0,[SP,#-4]	;sp after returning from MySub points at ans after popping r0-r3(content doesnt get cleared). -4 returns r3 value
+		ADD		SP,SP,#12 	;3x4 (3 items pushed into stack) > more portable if its relative SP shifting. can do MOV SP,#0xFFFFFC but if have multiple nested subroutine then not exactly good.
+		END
+		
+MySub	STMFD	SP!, {R0-R3}
+		LDR		R0,[SP, #24]	;24 > 6var x 4
+		LDR		R1,[SP,#20]	;numy will serve as counter (how many times x will add itself)
+		SUBS		R1,R1,#1		;reduce one to exclude 0, eg 2 will run 3 times if not minused 1.
+		MOV		R2,R0	;duplicate of num x
+LOOP		ADD		R0, R0,R2		;add r2=numx, add numx by itself
+		SUBS		R1,R1,#1		;reduce counter by 1
+		BNE		LOOP
+		LDR		R1, [SP,#16]	;sp should be currently at r3 becos of line19. so only need to move over r2-r0,then to ans, so 4 var = 16
+		STR		R0, [R1]
+		LDMFD	SP!,{R0-R3}	;same as LDMFD	SP!,[R3,R1,R2,R0]
+		MOV		PC,LR
+		
