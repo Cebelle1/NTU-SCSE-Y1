@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1666794314 source:c:\users\cebelle\onedrive - nanyang technological university\y1\sc1003 intro to comput think & pro\c\labcodes\lab3\assignment\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1667902289 source:c:\users\cebelle\onedrive - nanyang technological university\y1\sc1003 intro to comput think & pro\c\labcodes\labtest\prac2\practice2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
