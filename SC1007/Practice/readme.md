@@ -1,1 +1,1 @@
-additional practices i decided to do but still got a shit grade for sc1007. :)
+additional practices i decided to do help my sc1007 grade. :)
